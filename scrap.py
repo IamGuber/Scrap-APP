@@ -104,12 +104,11 @@ get_info_shop_name("https://www.etsy.com/shop/AlysaJewelryShop?ref=l2-about-shop
 
 # agree cookies
 
-#agree = driver.find_element("xpath", '//button[@class="wt-btn wt-btn--filled wt-mb-xs-0"]')
-
-#try:
-#    agree.click()
-#except:
-#    pass
+agree = driver.find_element("xpath", '//button[@class="wt-btn wt-btn--filled wt-mb-xs-0"]')
+try:
+    agree.click()
+except:
+    pass
 
 print("Today sales:", sales) # view info
 print("Shop names:", shop_name) # view info
