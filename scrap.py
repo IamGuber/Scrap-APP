@@ -79,19 +79,12 @@ def get_info_shop_name(url):
         try:
             response = requests.get(url)
             soup = BeautifulSoup(response.content, "html.parser")
-            div_element = soup.find("h1", {"class": "wt-text-heading-01 wt-text-truncate"})
+            div_element = soup.find("h2", {"class": "wt-text-body-01 wt-pb-xs-4"})
             text_content = div_element.text
+            text_content = "Deleted"
             shop_name.append(text_content)
         except:
-            try:
-                response = requests.get(url)
-                soup = BeautifulSoup(response.content, "html.parser")
-                div_element = soup.find("h2", {"class": "wt-text-body-01 wt-pb-xs-4"})
-                text_content = div_element.text
-                text_content = "Deleted"
-                shop_name.append(text_content)
-            except:
-                print("Unknown error from 'get_info_shop_name'.")
+            print("Unknown error from 'get_info_shop_name'.")
 
 
 # store url 507/507 (update here)
