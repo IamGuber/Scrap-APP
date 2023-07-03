@@ -45,7 +45,7 @@ def get_info_sales(url):
         text_filter = text_content.replace("Sales", "")
         text_filter_to_int = int(text_filter)
         sales.append(text_filter_to_int)
-    except ValueError: 
+    except: 
         try:
             response = requests.get(url)
             soup = BeautifulSoup(response.content, "html.parser")
@@ -55,15 +55,17 @@ def get_info_sales(url):
             text_filter2 = text_filter.replace(",", "")
             text_filter_to_int = int(text_filter2)
             sales.append(text_filter_to_int)
-        except ValueError:
-            response = requests.get(url)
-            soup = BeautifulSoup(response.content, "html.parser")
-            div_element = soup.find("span", {"class": "wt-text-caption wt-no-wrap"})
-            text_content = div_element.text
-            text_filter = text_content.replace("Sale", "")
-            text_filter2 = text_filter.replace(",", "")
-            text_filter_to_int = int(text_filter2)
-            sales.append(text_filter_to_int)
+        except:
+            try:
+                response = requests.get(url)
+                soup = BeautifulSoup(response.content, "html.parser")
+                div_element = soup.find("h2", {"class": "wt-text-body-01 wt-pb-xs-4"})
+                text_content = div_element.text
+                text_filter = text_content.replace("Sorry, the page you were looking for was not found.", "")
+                text_filter2 = 0
+                sales.append(text_filter2)
+            except:
+                print("Unknown error from 'get_info_sales'.")
 
 
 def get_info_shop_name(url):
@@ -73,11 +75,23 @@ def get_info_shop_name(url):
         div_element = soup.find("h1", {"class": "wt-text-heading-01 wt-text-truncate"})
         text_content = div_element.text
         shop_name.append(text_content)
-    except ValueError:
-        soup = BeautifulSoup(response.content, "html.parser")
-        div_element = soup.find("h1", {"class": "wt-text-heading-01 wt-text-truncate"})
-        text_content = div_element.text
-        shop_name.append(text_content)
+    except:
+        try:
+            response = requests.get(url)
+            soup = BeautifulSoup(response.content, "html.parser")
+            div_element = soup.find("h1", {"class": "wt-text-heading-01 wt-text-truncate"})
+            text_content = div_element.text
+            shop_name.append(text_content)
+        except:
+            try:
+                response = requests.get(url)
+                soup = BeautifulSoup(response.content, "html.parser")
+                div_element = soup.find("h2", {"class": "wt-text-body-01 wt-pb-xs-4"})
+                text_content = div_element.text
+                text_content = "Deleted"
+                shop_name.append(text_content)
+            except:
+                print("Unknown error from 'get_info_shop_name'.")
 
 
 # store url 507/507 (update here)
