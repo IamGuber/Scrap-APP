@@ -18,8 +18,6 @@ import string
 
 s = Service(r"C:/Users/voisk/Documents/chromedriver/chromedriver.exe")
 driver = webdriver.Chrome(service = s)
-#chrome_driver_path = "C:/Users/voisk/Documents/chromedriver/chromedriver.exe"
-#driver = webdriver.Chrome(executable_path=chrome_driver_path)
 
 # maximize window
 
