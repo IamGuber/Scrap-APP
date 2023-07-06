@@ -1,6 +1,8 @@
 # Scrap-APP
 "Domolazeriai" scraping APP. 
 
+This code example is working on windows. Original code working from ubuntu and mac os.
+
 app.py:
 The provided code appears to be a Python script that creates a graphical user interface (GUI) using the Tkinter library. The GUI includes a text box for displaying logs, two buttons for starting different functions, and a scheduling mechanism to automate the execution of those functions.
 Overall, this code sets up a GUI with buttons to initiate the execution of scraping and email sending functions. Additionally, it includes a scheduling mechanism to automatically trigger these functions at specific times every day. The logs are displayed in a text widget within the GUI to provide feedback on the execution of the functions.
