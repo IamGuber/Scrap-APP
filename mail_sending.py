@@ -9,8 +9,6 @@ import datetime
 import pandas as pd
 import time
 import schedule
-import week_stats
-import monthly_stats
 
 
 def send_email(file_path, subject, message, from_email, password, to_email):
@@ -75,6 +73,10 @@ send_email(f'{date2}(sorted).csv', 'ETSY SALES', 'etsy sales', 'scrapstatistics@
 
 def send_weekly_email():
 
+    # import .py file
+
+    import week_stats
+
     # get current date
 
     date = datetime.datetime.now()
@@ -99,6 +101,10 @@ schedule.every().monday.at("09:00").do(send_weekly_email)
 
 
 def send_monthly_email():
+
+    # import .py file
+
+    import monthly_stats
 
     # get current date
 
