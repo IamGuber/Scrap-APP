@@ -118,7 +118,7 @@ def send_monthly_email():
     send_email(f'{date2}(SortedMonthStats).csv', 'ETSY SALES-monthlystatistics', f'etsy sales-monthlystatistics\n{info_from_month}', 'scrapstatistics@gmail.com', 'zzdqjdfzkyqfuaap', 'domolazeriai@gmail.com')
 
 
-# schedule the email to be sent every day
+# schedule the email to be sent every first month day
 
 schedule.every().day.at("09:00").do(send_monthly_email)
 
